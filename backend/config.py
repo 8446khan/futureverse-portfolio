@@ -19,6 +19,10 @@ class Config:
 
     MAIL_USERNAME = os.getenv("MAIL_USERNAME")
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
+
+    # PostgreSQL on Render; SQLite locally
+    DATABASE_URL = os.getenv("DATABASE_URL")
+
     DATABASE = os.getenv("DATABASE_PATH", os.path.join(BASE_DIR, "portfolio.db"))
 
     FRONTEND_ORIGIN = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
