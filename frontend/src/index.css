@@ -1,0 +1,769 @@
+@import "tailwindcss";
+
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+
+:root {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 75px;
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    background: #070914;
+    color: #f8fafc;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+button,
+a {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+
+::selection {
+    background: #8b5cf6;
+    color: white;
+}
+
+/* =========================================
+   LAYOUT SYSTEM
+========================================= */
+
+.page-container {
+    width: min(100% - 48px, 1160px);
+    margin-inline: auto;
+}
+
+.section-spacing {
+    padding-top: 76px;
+    padding-bottom: 76px;
+}
+
+.section-heading {
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.section-description {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.hero-heading {
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1.08;
+    font-weight: 900;
+}
+
+.professional-card {
+    border-radius: 18px;
+    padding: 20px;
+}
+
+/* =========================================
+   GLASS EFFECT
+========================================= */
+
+.glass {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* =========================================
+   GRADIENT TEXT
+========================================= */
+
+.gradient-text {
+    background: linear-gradient(100deg, #60a5fa, #a78bfa, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* =========================================
+   GRID BACKGROUND
+========================================= */
+
+.grid-bg {
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+    background-size: 45px 45px;
+}
+
+/* =========================================
+   ORB EFFECT
+========================================= */
+
+.orb {
+    background: radial-gradient(circle at 30% 25%,
+            #bfdbfe 0%,
+            #6366f1 18%,
+            #312e81 43%,
+            #111827 68%,
+            #070914 80%);
+    box-shadow: 0 0 70px rgba(99, 102, 241, 0.25);
+}
+
+.float {
+    animation: float 6s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translate3d(0, -18px, 0) rotate(5deg);
+    }
+}
+
+/* =========================================
+   LIGHT MODE BASE
+========================================= */
+
+.light-mode {
+    background: #f4f6fc;
+    color: #172033;
+    color-scheme: light;
+}
+
+.light-mode section {
+    background-color: transparent;
+}
+
+.light-mode .section-muted {
+    background: #e9edfa;
+}
+
+.light-mode .text-muted {
+    color: #64748b;
+}
+
+/* =========================================
+   LIGHT MODE GRID
+========================================= */
+
+.light-mode .grid-bg {
+    background-image:
+        linear-gradient(rgba(99, 102, 241, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.055) 1px, transparent 1px);
+}
+
+/* =========================================
+   LIGHT MODE HEADER
+========================================= */
+
+.light-mode header,
+.light-mode [class*="bg-[#070914]"] {
+    background-color: rgba(255, 255, 255, 0.94) !important;
+    border-color: rgba(30, 41, 59, 0.10) !important;
+}
+
+/* =========================================
+   LIGHT MODE TEXT
+========================================= */
+
+.light-mode .text-white,
+.light-mode .text-slate-100,
+.light-mode .text-slate-200,
+.light-mode .text-slate-300 {
+    color: #172033 !important;
+}
+
+.light-mode .text-slate-400,
+.light-mode .text-slate-500 {
+    color: #64748b !important;
+}
+
+.light-mode .text-slate-600 {
+    color: #475569 !important;
+}
+
+/* =========================================
+   LIGHT MODE BORDERS
+========================================= */
+
+.light-mode [class*="border-white"] {
+    border-color: rgba(30, 41, 59, 0.14) !important;
+}
+
+/* =========================================
+   LIGHT MODE GLASS CARDS
+========================================= */
+
+.light-mode .glass {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(99, 102, 241, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(30, 41, 59, 0.055);
+}
+
+.light-mode .glass:hover {
+    border-color: rgba(99, 102, 241, 0.28);
+    box-shadow: 0 14px 35px rgba(99, 102, 241, 0.09);
+}
+
+/* =========================================
+   LIGHT MODE GRADIENT HEADINGS
+========================================= */
+
+.light-mode .gradient-text {
+    background: linear-gradient(100deg, #2563eb, #7c3aed, #0891b2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* =========================================
+   LIGHT MODE BUTTONS
+========================================= */
+
+.light-mode button {
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.light-mode .bg-cyan-400 {
+    background-color: #0891b2;
+    color: white;
+}
+
+.light-mode .orb {
+    box-shadow: 0 0 65px rgba(99, 102, 241, 0.15);
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.light-mode input,
+.light-mode textarea,
+.light-mode select {
+    background-color: #ffffff;
+    color: #172033;
+    border-color: #dbe2f0;
+}
+
+.light-mode input::placeholder,
+.light-mode textarea::placeholder {
+    color: #94a3b8;
+}
+
+/* =========================================
+   ABOUT SECTION
+========================================= */
+
+.theme-subcard {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.light-mode .theme-subcard {
+    background: #f5f7ff;
+    border: 1px solid #e5e9f5;
+}
+
+.light-mode .theme-subcard:hover {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+}
+
+/* =========================================
+   CONTACT FORM
+========================================= */
+
+.theme-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-input:focus {
+    border-color: #22d3ee;
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.1);
+}
+
+.theme-input::placeholder {
+    color: #94a3b8;
+}
+
+.light-mode .theme-input {
+    background: #ffffff;
+    border-color: #dce3f0;
+    color: #172033;
+}
+
+.light-mode .theme-input:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.light-mode .theme-input::placeholder {
+    color: #94a3b8;
+}
+
+.contact-glow {
+    background: rgba(139, 92, 246, 0.18);
+}
+
+.light-mode .contact-glow {
+    background: rgba(129, 140, 248, 0.12);
+}
+
+.light-mode .contact-card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid #e4e8f3;
+    box-shadow: 0 20px 60px rgba(30, 41, 59, 0.07);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.light-mode footer {
+    background: #eef1fa;
+    border-color: #e0e5f1;
+}
+
+.light-mode footer p {
+    color: #64748b;
+}
+
+.light-mode footer a {
+    color: #475569;
+}
+
+.light-mode footer a:hover {
+    color: #4f46e5;
+}
+
+/* =========================================
+   THEME-AWARE SECTIONS
+========================================= */
+
+.theme-section {
+    transition: background-color 0.25s ease;
+}
+
+.theme-secondary {
+    color: #cbd5e1;
+}
+
+.theme-muted {
+    color: #94a3b8;
+}
+
+.light-mode .theme-secondary {
+    color: #475569;
+}
+
+.light-mode .theme-muted {
+    color: #64748b;
+}
+
+/* =========================================
+   JOURNEY TIMELINE
+========================================= */
+
+.timeline-marker {
+    background: #070914;
+}
+
+.light-mode .timeline-marker {
+    background: #f5f7ff;
+}
+
+/* =========================================
+   SKILLS CARDS
+========================================= */
+
+.skill-card {
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34, 211, 238, 0.35);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.light-mode .skill-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: #e2e8f0;
+    box-shadow: 0 8px 25px rgba(30, 41, 59, 0.04);
+}
+
+.light-mode .skill-card:hover {
+    background: #ffffff;
+    border-color: #a5b4fc;
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.1);
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero-section {
+    position: relative;
+    isolation: isolate;
+    background-color: #070914;
+}
+
+.hero-section>div:first-child {
+    z-index: 0;
+}
+
+.hero-overlay {
+    background: linear-gradient(90deg,
+            rgba(7, 9, 20, 0.96) 0%,
+            rgba(7, 9, 20, 0.72) 38%,
+            rgba(7, 9, 20, 0.12) 100%);
+    z-index: 1;
+}
+
+.hero-resume {
+    color: #f8fafc;
+}
+
+.light-mode .hero-section {
+    background-color: #f4f6fc;
+}
+
+.light-mode .hero-overlay {
+    background: linear-gradient(90deg,
+            rgba(244, 246, 252, 0.94) 0%,
+            rgba(244, 246, 252, 0.65) 35%,
+            rgba(244, 246, 252, 0.08) 100%);
+}
+
+.light-mode .hero-resume {
+    color: #172033;
+    border-color: #cbd5e1;
+}
+
+.light-mode .hero-resume:hover {
+    color: #4f46e5;
+    border-color: #818cf8;
+}
+
+/* =========================================
+   PROJECT FILTER BUTTONS
+========================================= */
+
+.project-filter {
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-filter:hover {
+    color: #22d3ee;
+    border-color: rgba(34, 211, 238, 0.4);
+}
+
+.project-filter.active {
+    color: #0f172a;
+    background: #22d3ee;
+    border-color: #22d3ee;
+}
+
+.light-mode .project-filter {
+    color: #475569;
+    background: #ffffff;
+    border-color: #e2e8f0;
+}
+
+.light-mode .project-filter:hover {
+    color: #4f46e5;
+    border-color: #a5b4fc;
+}
+
+.light-mode .project-filter.active {
+    color: #ffffff;
+    background: #6366f1;
+    border-color: #6366f1;
+}
+
+/* =========================================
+   CERTIFICATION CARDS
+========================================= */
+
+.certification-card {
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.certification-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34, 211, 238, 0.35);
+}
+
+.light-mode .certification-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #e2e8f0;
+    box-shadow: 0 8px 25px rgba(30, 41, 59, 0.04);
+}
+
+.light-mode .certification-card:hover {
+    border-color: #a5b4fc;
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.1);
+}
+
+/* =========================================
+   PROJECT IMAGE
+========================================= */
+
+.project-image {
+    position: relative;
+    background: linear-gradient(135deg, #17152f, #102535);
+}
+
+.project-placeholder {
+    color: #67e8f9;
+}
+
+.project-category {
+    color: #ffffff;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.project-image img {
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.04);
+}
+
+.light-mode .project-image {
+    background: linear-gradient(135deg, #eef2ff, #ecfeff);
+}
+
+.light-mode .project-image .grid-bg {
+    background-image:
+        linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+}
+
+.light-mode .project-placeholder {
+    color: #6366f1;
+}
+
+.light-mode .project-category {
+    color: #ffffff;
+    background: rgba(49, 46, 129, 0.88);
+}
+
+/* =========================================
+   AVAILABILITY BADGE
+========================================= */
+
+.availability-badge {
+    color: #86efac;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.availability-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+    animation: availability-glow 1.8s ease-out infinite;
+}
+
+@keyframes availability-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+.light-mode .availability-badge {
+    color: #166534;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.light-mode .availability-indicator {
+    background: #16a34a;
+    animation-name: availability-glow-light;
+}
+
+@keyframes availability-glow-light {
+    0% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(22, 163, 74, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+    }
+}
+
+/* =========================================
+   RESPONSIVE OPTIMIZATION
+========================================= */
+
+@media (max-width: 1024px) {
+    .section-spacing {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .hero-heading {
+        font-size: clamp(40px, 6vw, 54px);
+    }
+}
+
+@media (max-width: 768px) {
+    .glass {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .orb {
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .light-mode .glass {
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
+    }
+
+    .page-container {
+        width: min(100% - 32px, 600px);
+    }
+
+    .section-spacing {
+        padding-top: 52px;
+        padding-bottom: 52px;
+    }
+
+    .hero-heading {
+        font-size: clamp(36px, 9vw, 46px);
+    }
+
+    .section-description {
+        font-size: 14px;
+    }
+
+    .professional-card {
+        padding: 16px;
+    }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =========================================
+   CONSISTENT PORTFOLIO SECTION SIZES
+========================================= */
+
+#journey,
+#certifications,
+#github,
+#terminal,
+#contact {
+    scroll-margin-top: 76px;
+}
+
+#journey,
+#certifications,
+#github,
+#terminal,
+#contact {
+    padding-top: 68px;
+    padding-bottom: 68px;
+}
+
+#journey .max-w-7xl,
+#certifications .max-w-7xl,
+#github .max-w-7xl,
+#terminal .max-w-7xl,
+#contact .max-w-7xl {
+    max-width: 1152px;
+}
+
+@media (max-width: 768px) {
+
+    #journey,
+    #certifications,
+    #github,
+    #terminal,
+    #contact {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+}
