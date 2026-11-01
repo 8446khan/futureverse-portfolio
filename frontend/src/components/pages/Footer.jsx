@@ -11,7 +11,7 @@ import {
 import { Link } from "react-router-dom";
 
 export default function Footer({ profile = {} }) {
-    const name = profile.name || "Khan Shoaib";
+    const name = "Khan Shoaib";
     const email = profile.email || "khanshoaiburrhman@gmail.com";
     const phone = "+91-8446289275";
     const whatsappNumber = "918446289275";
@@ -53,7 +53,7 @@ export default function Footer({ profile = {} }) {
 
                         {profile.location && (
                             <p className="theme-muted mt-3 text-xs">
-                                📍 {profile.location}
+                                📍 {"Kalyan, Maharashtra, India"}
                             </p>
                         )}
                     </div>
@@ -73,7 +73,7 @@ export default function Footer({ profile = {} }) {
                                     size={16}
                                     className="shrink-0 text-cyan-400"
                                 />
-                                {email}
+                                {"khanshoaiburrhman@gmail.com"}
                                 <ArrowUpRight size={12} />
                             </a>
 

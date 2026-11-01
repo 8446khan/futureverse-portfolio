@@ -224,7 +224,7 @@ export default function ContactSection({
                                     className="inline-flex items-center gap-2 break-all text-xs font-semibold text-cyan-400 transition-colors hover:text-violet-400 sm:text-sm"
                                 >
                                     <Mail size={17} />
-                                    {email}
+                                    {"khanshoaiburrhman@gmail.com"}
                                     <ArrowUpRight size={14} />
                                 </a>
 
