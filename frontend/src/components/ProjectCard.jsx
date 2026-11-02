@@ -1,119 +1,101 @@
 
-import { motion } from "framer-motion";
-import { ExternalLink, Github, Eye } from "lucide-react";
+import { memo } from "react";
+import { Github, ExternalLink, ArrowUpRight } from "lucide-react";
 
-export default function ProjectCard({ project, onOpen }) {
-    const liveUrl = project.live_url || project.liveUrl;
-    const githubUrl = project.github_url || project.githubUrl;
-
-    const projectTitle = project.title || project.name;
-    const projectImage = project.image || project.image_url;
-
-    const technologies =
-        project.technologies || project.tech_stack || [];
-
+function ProjectCard({ project, onOpen }) {
     return (
-        <motion.div
-            whileHover={{ y: -8 }}
-            transition={{ duration: 0.3 }}
-            className="group overflow-hidden rounded-2xl border border-white/10
-                       bg-[#111419] hover:border-[#d4a94f]/50
-                       transition-all duration-300"
-        >
-            {/* Project Image */}
-            <div className="relative h-56 overflow-hidden">
-                <img
-                    src={projectImage}
-                    alt={projectTitle}
-                    loading="lazy"
-                    className="h-full w-full object-cover
-                               transition-transform duration-500
-                               group-hover:scale-110"
-                />
+        <article className="glass project-card group overflow-hidden rounded-2xl transition-transform duration-200 ease-out hover:-translate-y-1">
 
-                <div className="absolute inset-0 bg-gradient-to-t
-                                from-[#08090b]/70 to-transparent" />
+            {/* Project Image */}
+            <div className="project-image grid-bg relative flex h-36 items-center justify-center overflow-hidden">
+
+                {project.image_url ? (
+                    <img
+                        src={project.image_url}
+                        alt={`${project.title} preview`}
+                        loading="lazy"
+                        decoding="async"
+                        className="relative z-10 h-full w-full object-cover"
+                    />
+                ) : (
+                    <div className="project-placeholder relative z-10 text-5xl">
+                        ✧
+                    </div>
+                )}
+
+                <span className="project-category absolute right-3 top-3 z-20 rounded-full px-2.5 py-1 text-[10px]">
+                    {project.category || "Project"}
+                </span>
             </div>
 
-            {/* Project Content */}
-            <div className="p-6">
-                <h3 className="text-xl font-semibold text-white">
-                    {projectTitle}
+            {/* Project Information */}
+            <div className="p-4">
+
+                <h3 className="text-lg font-bold">
+                    {project.title}
                 </h3>
 
-                <p className="mt-3 text-sm leading-6 text-gray-400">
+                <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-400">
                     {project.description}
                 </p>
 
                 {/* Technologies */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                    {technologies.map((technology, index) => (
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                    {(project.technologies || []).slice(0, 4).map((technology) => (
                         <span
-                            key={index}
-                            className="rounded-full border border-white/10
-                                       bg-white/5 px-3 py-1 text-xs
-                                       text-[#d4a94f]"
+                            key={technology}
+                            className="rounded-full bg-cyan-400/10 px-2.5 py-1 text-[10px] text-cyan-300"
                         >
                             {technology}
                         </span>
                     ))}
                 </div>
 
-                {/* Project Links */}
-                <div className="mt-6 flex flex-wrap gap-3">
+                {/* Project Actions */}
+                <div className="mt-4 flex items-center justify-between">
 
-                    {/* Live Demo */}
-                    {liveUrl && (
-                        <a
-                            href={liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 rounded-lg
-                                       bg-[#d4a94f] px-4 py-2.5 text-sm
-                                       font-semibold text-black
-                                       hover:bg-[#e5bd65] transition"
-                        >
-                            Live Demo
-                            <ExternalLink size={16} />
-                        </a>
-                    )}
+                    <button
+                        type="button"
+                        onClick={() => onOpen(project)}
+                        className="flex items-center gap-1.5 text-xs transition-colors hover:text-cyan-300"
+                    >
+                        Details
+                        <ArrowUpRight size={14} />
+                    </button>
 
-                    {/* GitHub */}
-                    {githubUrl && (
-                        <a
-                            href={githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 rounded-lg
-                                       border border-white/15 px-4 py-2.5
-                                       text-sm font-medium text-white
-                                       hover:border-[#d4a94f]
-                                       hover:text-[#d4a94f] transition"
-                        >
-                            <Github size={16} />
-                            GitHub
-                        </a>
-                    )}
+                    <div className="flex items-center gap-3">
 
-                    {/* Project Details */}
-                    {onOpen && (
-                        <button
-                            type="button"
-                            onClick={() => onOpen(project)}
-                            className="inline-flex items-center gap-2 rounded-lg
-                                       border border-white/15 px-4 py-2.5
-                                       text-sm font-medium text-gray-300
-                                       hover:border-white/40
-                                       hover:text-white transition"
-                        >
-                            <Eye size={16} />
-                            Details
-                        </button>
-                    )}
+                        {/* GitHub Repository */}
+                        {project.github_url && (
+                            <a
+                                href={project.github_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="View project on GitHub"
+                                className="transition-colors hover:text-cyan-300"
+                            >
+                                <Github size={15} />
+                            </a>
+                        )}
+
+                        {/* Live Demo */}
+                        {project.demo_url && (
+                            <a
+                                href={project.demo_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Open live project demo"
+                                className="transition-colors hover:text-cyan-300"
+                            >
+                                <ExternalLink size={15} />
+                            </a>
+                        )}
+
+                    </div>
                 </div>
             </div>
-        </motion.div>
+        </article>
     );
 }
+
+export default memo(ProjectCard);
